@@ -7,8 +7,8 @@ python-multipart==0.0.6
 Pillow==10.2.0
 numpy==1.26.3
 
-# Video processing (required for advanced features)
-opencv-python==4.9.0.80
+# Video processing — headless version, no GUI/X11 deps (server-safe)
+opencv-python-headless==4.9.0.80
 
 # Data validation
 pydantic==2.5.3
