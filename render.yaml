@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: cs16-sprite-api
+    env: docker
+    region: oregon
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 8000
+    disk:
+      name: sprite-outputs
+      mountPath: /app/outputs
+      sizeGB: 1
