@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 
 # API base URL (change to your deployed URL)
-API_URL = "http://localhost:8000"
+API_URL = "https://cs16-sprite-api.onrender.com"
 
 
 def test_health_check():

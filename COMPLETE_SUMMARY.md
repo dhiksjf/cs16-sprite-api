@@ -32,7 +32,7 @@ The most powerful CS 1.6 sprite creation tool ever made, with **AI-powered proce
 curl -F "file=@explosion.mp4" \
      -F "remove_background=true" \
      -F "background_mode=black" \
-     http://localhost:8000/api/v2/convert/advanced
+     https://cs16-sprite-api.onrender.com/api/v2/convert/advanced
 ```
 
 #### 2. **Smart Auto-Cropping** ⭐
@@ -46,7 +46,7 @@ curl -F "file=@explosion.mp4" \
 curl -F "file=@sprite.png" \
      -F "auto_crop=true" \
      -F "crop_padding=10" \
-     http://localhost:8000/api/v2/convert/advanced
+     https://cs16-sprite-api.onrender.com/api/v2/convert/advanced
 ```
 
 #### 3. **Image Enhancement** ⭐
@@ -253,12 +253,12 @@ chmod +x start.sh
 
 ### 2. Visit Interactive Docs
 ```
-http://localhost:8000/docs
+https://cs16-sprite-api.onrender.com/docs
 ```
 
 ### 3. Try Advanced Conversion
 ```bash
-curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced" \
   -F "file=@test.png" \
   -F "remove_background=true" \
   -F "auto_crop=true" \
@@ -308,7 +308,7 @@ import requests
 
 # Convert with all features
 response = requests.post(
-    'http://localhost:8000/api/v2/convert/advanced',
+    'https://cs16-sprite-api.onrender.com/api/v2/convert/advanced',
     files={'file': open('muzzleflash.png', 'rb')},
     data={
         'remove_background': True,      # Remove black
@@ -327,7 +327,7 @@ print(f"🎨 Applied: {result['processing_applied']}")
 
 # Download
 sprite_id = result['sprite_id']
-sprite_data = requests.get(f"http://localhost:8000/api/v1/download/{sprite_id}")
+sprite_data = requests.get(f"https://cs16-sprite-api.onrender.com/api/v1/download/{sprite_id}")
 
 with open('muzzleflash.spr', 'wb') as f:
     f.write(sprite_data.content)
@@ -337,7 +337,7 @@ print("✅ Sprite ready for CS 1.6!")
 
 ### Explosion Video (Full Processing)
 ```bash
-curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced" \
   -F "file=@explosion.mp4" \
   -F "is_video=true" \
   -F "fps=20" \
@@ -529,12 +529,12 @@ docker run -p 8000:8000 sprite-api
 - **PROJECT_OVERVIEW.md** - Architecture
 
 ### Interactive
-- Swagger UI: http://localhost:8000/docs
-- ReDoc: http://localhost:8000/redoc
-- Features list: http://localhost:8000/api/v1/features
+- Swagger UI: https://cs16-sprite-api.onrender.com/docs
+- ReDoc: https://cs16-sprite-api.onrender.com/redoc
+- Features list: https://cs16-sprite-api.onrender.com/api/v1/features
 
 ### Test
-- Health check: `curl http://localhost:8000/health`
+- Health check: `curl https://cs16-sprite-api.onrender.com/health`
 - Test script: `python test_api.py`
 - Sample requests in docs
 
@@ -545,7 +545,7 @@ docker run -p 8000:8000 sprite-api
 ### 1. **Start Now**
 ```bash
 ./start.sh
-open http://localhost:8000/docs
+open https://cs16-sprite-api.onrender.com/docs
 ```
 
 ### 2. **Try Examples**
@@ -599,7 +599,7 @@ open http://localhost:8000/docs
 ./start.sh
 
 # Your first advanced sprite
-curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced" \
   -F "file=@your_image.png" \
   -F "remove_background=true" \
   -F "auto_crop=true" \

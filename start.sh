@@ -54,15 +54,15 @@ echo "Waiting for server to start..."
 sleep 5
 
 # Check if server is running
-if curl -s http://localhost:8000/health > /dev/null; then
+if curl -s https://cs16-sprite-api.onrender.com/health > /dev/null; then
     echo ""
     echo "=========================================="
     echo "✅ API is running successfully!"
     echo "=========================================="
     echo ""
-    echo "🌐 API URL: http://localhost:8000"
-    echo "📚 Interactive Docs: http://localhost:8000/docs"
-    echo "📖 Alternative Docs: http://localhost:8000/redoc"
+    echo "🌐 API URL: https://cs16-sprite-api.onrender.com"
+    echo "📚 Interactive Docs: https://cs16-sprite-api.onrender.com/docs"
+    echo "📖 Alternative Docs: https://cs16-sprite-api.onrender.com/redoc"
     echo ""
     echo "📝 To view logs:"
     echo "   $COMPOSE_CMD logs -f"

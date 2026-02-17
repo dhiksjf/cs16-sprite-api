@@ -18,7 +18,7 @@ Complete examples for using the CS 1.6 Sprite Generator API in various programmi
 ```python
 import requests
 
-def convert_image_to_sprite(image_path, api_url="http://localhost:8000"):
+def convert_image_to_sprite(image_path, api_url="https://cs16-sprite-api.onrender.com"):
     """Convert an image to CS 1.6 sprite"""
     
     with open(image_path, 'rb') as f:
@@ -65,7 +65,7 @@ convert_image_to_sprite("muzzleflash.png")
 ```python
 import requests
 
-def convert_video_to_sprite(video_path, fps=15, max_frames=50, api_url="http://localhost:8000"):
+def convert_video_to_sprite(video_path, fps=15, max_frames=50, api_url="https://cs16-sprite-api.onrender.com"):
     """Convert a video to animated CS 1.6 sprite"""
     
     with open(video_path, 'rb') as f:
@@ -112,7 +112,7 @@ convert_video_to_sprite("explosion.mp4", fps=20, max_frames=30)
 ```python
 import requests
 
-def create_animated_sprite(image_paths, frame_interval=0.1, api_url="http://localhost:8000"):
+def create_animated_sprite(image_paths, frame_interval=0.1, api_url="https://cs16-sprite-api.onrender.com"):
     """Create animated sprite from multiple images"""
     
     files = [('files', open(path, 'rb')) for path in image_paths]
@@ -164,7 +164,7 @@ const FormData = require('form-data');
 const fs = require('fs');
 const axios = require('axios');
 
-async function convertImageToSprite(imagePath, apiUrl = 'http://localhost:8000') {
+async function convertImageToSprite(imagePath, apiUrl = 'https://cs16-sprite-api.onrender.com') {
   try {
     const form = new FormData();
     form.append('file', fs.createReadStream(imagePath));
@@ -210,7 +210,7 @@ async function convertVideoToSprite(videoPath, options = {}) {
   const {
     fps = 15,
     maxFrames = 50,
-    apiUrl = 'http://localhost:8000'
+    apiUrl = 'https://cs16-sprite-api.onrender.com'
   } = options;
   
   try {
@@ -260,7 +260,7 @@ convertVideoToSprite('explosion.mp4', { fps: 20, maxFrames: 30 });
 ### Convert Image
 
 ```bash
-curl -X POST "http://localhost:8000/api/v1/convert/image" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v1/convert/image" \
   -F "file=@muzzleflash.png" \
   -F "sprite_type=vp_parallel" \
   -F "texture_format=additive" \
@@ -271,7 +271,7 @@ curl -X POST "http://localhost:8000/api/v1/convert/image" \
 ### Convert Video
 
 ```bash
-curl -X POST "http://localhost:8000/api/v1/convert/video" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v1/convert/video" \
   -F "file=@explosion.mp4" \
   -F "sprite_type=vp_parallel" \
   -F "texture_format=additive" \
@@ -285,14 +285,14 @@ curl -X POST "http://localhost:8000/api/v1/convert/video" \
 
 ```bash
 # Get sprite_id from conversion response
-curl -O -J "http://localhost:8000/api/v1/download/{sprite_id}"
+curl -O -J "https://cs16-sprite-api.onrender.com/api/v1/download/{sprite_id}"
 ```
 
 ### Complete Workflow
 
 ```bash
 # Convert
-RESPONSE=$(curl -s -X POST "http://localhost:8000/api/v1/convert/image" \
+RESPONSE=$(curl -s -X POST "https://cs16-sprite-api.onrender.com/api/v1/convert/image" \
   -F "file=@muzzleflash.png" \
   -F "texture_format=additive")
 
@@ -300,7 +300,7 @@ RESPONSE=$(curl -s -X POST "http://localhost:8000/api/v1/convert/image" \
 SPRITE_ID=$(echo $RESPONSE | jq -r '.sprite_id')
 
 # Download
-curl -o "sprite.spr" "http://localhost:8000/api/v1/download/$SPRITE_ID"
+curl -o "sprite.spr" "https://cs16-sprite-api.onrender.com/api/v1/download/$SPRITE_ID"
 
 echo "Downloaded sprite.spr"
 ```
@@ -314,7 +314,7 @@ echo "Downloaded sprite.spr"
 ```php
 <?php
 
-function convertImageToSprite($imagePath, $apiUrl = 'http://localhost:8000') {
+function convertImageToSprite($imagePath, $apiUrl = 'https://cs16-sprite-api.onrender.com') {
     $ch = curl_init();
     
     $postFields = [
@@ -373,7 +373,7 @@ public class SpriteConverter
     private readonly HttpClient _httpClient;
     private readonly string _apiUrl;
     
-    public SpriteConverter(string apiUrl = "http://localhost:8000")
+    public SpriteConverter(string apiUrl = "https://cs16-sprite-api.onrender.com")
     {
         _httpClient = new HttpClient();
         _apiUrl = apiUrl;

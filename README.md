@@ -129,9 +129,9 @@ Check API health status.
    ```
 
 3. **Access the API**
-   - API: `http://localhost:8000`
-   - Interactive docs: `http://localhost:8000/docs`
-   - Alternative docs: `http://localhost:8000/redoc`
+   - API: `https://cs16-sprite-api.onrender.com`
+   - Interactive docs: `https://cs16-sprite-api.onrender.com/docs`
+   - Alternative docs: `https://cs16-sprite-api.onrender.com/redoc`
 
 ### Manual Setup (Without Docker)
 
@@ -226,7 +226,7 @@ Check API health status.
 
 **Convert an image:**
 ```bash
-curl -X POST "http://localhost:8000/api/v1/convert/image" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v1/convert/image" \
   -F "file=@muzzleflash.png" \
   -F "texture_format=additive" \
   -F "sprite_type=vp_parallel"
@@ -234,7 +234,7 @@ curl -X POST "http://localhost:8000/api/v1/convert/image" \
 
 **Download the sprite:**
 ```bash
-curl -O -J "http://localhost:8000/api/v1/download/{sprite_id}"
+curl -O -J "https://cs16-sprite-api.onrender.com/api/v1/download/{sprite_id}"
 ```
 
 ### Python
@@ -253,7 +253,7 @@ with open('muzzleflash.png', 'rb') as f:
     }
     
     response = requests.post(
-        'http://localhost:8000/api/v1/convert/image',
+        'https://cs16-sprite-api.onrender.com/api/v1/convert/image',
         files=files,
         data=data
     )
@@ -263,7 +263,7 @@ with open('muzzleflash.png', 'rb') as f:
     
 # Download sprite
 download_response = requests.get(
-    f'http://localhost:8000/api/v1/download/{sprite_id}'
+    f'https://cs16-sprite-api.onrender.com/api/v1/download/{sprite_id}'
 )
 
 with open('muzzleflash.spr', 'wb') as f:
@@ -284,7 +284,7 @@ async function convertToSprite() {
   form.append('sprite_type', 'vp_parallel');
   
   const response = await axios.post(
-    'http://localhost:8000/api/v1/convert/image',
+    'https://cs16-sprite-api.onrender.com/api/v1/convert/image',
     form,
     { headers: form.getHeaders() }
   );
@@ -293,7 +293,7 @@ async function convertToSprite() {
   
   // Download
   const download = await axios.get(
-    `http://localhost:8000/api/v1/download/${sprite_id}`,
+    `https://cs16-sprite-api.onrender.com/api/v1/download/${sprite_id}`,
     { responseType: 'arraybuffer' }
   );
   

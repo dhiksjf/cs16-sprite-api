@@ -57,7 +57,7 @@ Transform your images and videos into professional Counter-Strike 1.6 sprites wi
 ```bash
 chmod +x start.sh
 ./start.sh
-# Visit http://localhost:8000/docs
+# Visit https://cs16-sprite-api.onrender.com/docs
 ```
 
 ### Option 2: Manual
@@ -89,7 +89,7 @@ python main.py
 
 ### Example 1: Muzzle Flash (Auto Background Removal)
 ```bash
-curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced" \
   -F "file=@muzzleflash.png" \
   -F "remove_background=true" \
   -F "background_mode=black" \
@@ -108,7 +108,7 @@ curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
 
 ### Example 2: Explosion Video (Full Processing)
 ```bash
-curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced" \
   -F "file=@explosion.mp4" \
   -F "is_video=true" \
   -F "fps=20" \
@@ -130,7 +130,7 @@ curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
 
 ### Example 3: Green Screen Removal
 ```bash
-curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced" \
   -F "file=@greenscreen.mp4" \
   -F "is_video=true" \
   -F "remove_background=true" \
@@ -154,7 +154,7 @@ import requests
 def create_sprite_advanced(image_path):
     with open(image_path, 'rb') as f:
         response = requests.post(
-            'http://localhost:8000/api/v2/convert/advanced',
+            'https://cs16-sprite-api.onrender.com/api/v2/convert/advanced',
             files={'file': f},
             data={
                 # Background removal
@@ -184,7 +184,7 @@ def create_sprite_advanced(image_path):
             print(f"🎨 Processing: {result['processing_applied']}")
             
             # Download sprite
-            sprite = requests.get(f"http://localhost:8000{result['download_url']}")
+            sprite = requests.get(f"https://cs16-sprite-api.onrender.com{result['download_url']}")
             with open('output.spr', 'wb') as out:
                 out.write(sprite.content)
                 
@@ -199,7 +199,7 @@ create_sprite_advanced('muzzleflash.png')
 def create_video_sprite(video_path):
     with open(video_path, 'rb') as f:
         response = requests.post(
-            'http://localhost:8000/api/v2/convert/advanced',
+            'https://cs16-sprite-api.onrender.com/api/v2/convert/advanced',
             files={'file': f},
             data={
                 'is_video': True,
@@ -364,11 +364,11 @@ chmod +x start.sh
 ```
 
 ### 2. Try the Interactive Docs
-Visit: http://localhost:8000/docs
+Visit: https://cs16-sprite-api.onrender.com/docs
 
 ### 3. Test Advanced Features
 ```bash
-curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced" \
   -F "file=@test.png" \
   -F "remove_background=true"
 ```
@@ -478,10 +478,10 @@ Open `ADVANCED_FEATURES.md` for complete documentation
 ./start.sh
 
 # Open interactive docs
-open http://localhost:8000/docs
+open https://cs16-sprite-api.onrender.com/docs
 
 # Try advanced conversion
-curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced" \
   -F "file=@your_image.png" \
   -F "remove_background=true" \
   -F "auto_crop=true" \

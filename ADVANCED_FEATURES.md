@@ -26,7 +26,7 @@ Remove backgrounds automatically with multiple detection modes.
 
 **Example:**
 ```bash
-curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced" \
   -F "file=@muzzleflash.png" \
   -F "remove_background=true" \
   -F "background_mode=black" \
@@ -50,7 +50,7 @@ Automatically crop images to content bounds, removing empty space.
 
 **Example:**
 ```bash
-curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced" \
   -F "file=@sprite.png" \
   -F "auto_crop=true" \
   -F "crop_padding=10"
@@ -75,7 +75,7 @@ Automatically enhance image quality with professional adjustments.
 import requests
 
 response = requests.post(
-    'http://localhost:8000/api/v2/convert/advanced',
+    'https://cs16-sprite-api.onrender.com/api/v2/convert/advanced',
     files={'file': open('explosion.png', 'rb')},
     data={
         'auto_enhance': True,
@@ -108,7 +108,7 @@ formData.append('file', fileInput.files[0]);
 formData.append('smooth_edges', 'true');
 formData.append('edge_blur_radius', '3');
 
-fetch('http://localhost:8000/api/v2/convert/advanced', {
+fetch('https://cs16-sprite-api.onrender.com/api/v2/convert/advanced', {
     method: 'POST',
     body: formData
 });
@@ -201,7 +201,7 @@ Remove duplicate frames and optimize video sprites.
 
 **Example:**
 ```bash
-curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced" \
   -F "file=@explosion.mp4" \
   -F "is_video=true" \
   -F "remove_duplicate_frames=true" \
@@ -215,7 +215,7 @@ curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
 
 ### Muzzle Flash (Black Background)
 ```bash
-curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced" \
   -F "file=@muzzleflash.png" \
   -F "remove_background=true" \
   -F "background_mode=black" \
@@ -227,7 +227,7 @@ curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
 
 ### Explosion Video
 ```bash
-curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced" \
   -F "file=@explosion.mp4" \
   -F "is_video=true" \
   -F "fps=20" \
@@ -242,7 +242,7 @@ curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
 
 ### Green Screen Effect
 ```bash
-curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced" \
   -F "file=@greenscreen.mp4" \
   -F "is_video=true" \
   -F "fps=15" \
@@ -254,7 +254,7 @@ curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
 
 ### Scanned Image Cleanup
 ```bash
-curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced" \
   -F "file=@scanned_sprite.jpg" \
   -F "denoise=true" \
   -F "denoise_strength=10" \
@@ -302,7 +302,7 @@ def advanced_sprite_conversion(image_path):
         }
         
         response = requests.post(
-            'http://localhost:8000/api/v2/convert/advanced',
+            'https://cs16-sprite-api.onrender.com/api/v2/convert/advanced',
             files=files,
             data=data
         )
@@ -317,7 +317,7 @@ def advanced_sprite_conversion(image_path):
             # Download sprite
             sprite_id = result['sprite_id']
             sprite_data = requests.get(
-                f"http://localhost:8000/api/v1/download/{sprite_id}"
+                f"https://cs16-sprite-api.onrender.com/api/v1/download/{sprite_id}"
             )
             
             with open(f"output_{sprite_id}.spr", 'wb') as out:
@@ -364,7 +364,7 @@ def advanced_video_conversion(video_path):
         }
         
         response = requests.post(
-            'http://localhost:8000/api/v2/convert/advanced',
+            'https://cs16-sprite-api.onrender.com/api/v2/convert/advanced',
             files=files,
             data=data
         )
@@ -520,17 +520,17 @@ result = advanced_video_conversion('explosion.mp4')
 
 1. **Basic Usage:**
 ```bash
-curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced" \
   -F "file=@image.png" \
   -F "remove_background=true"
 ```
 
 2. **Try Interactive Docs:**
-Visit `http://localhost:8000/docs` and test the `/api/v2/convert/advanced` endpoint
+Visit `https://cs16-sprite-api.onrender.com/docs` and test the `/api/v2/convert/advanced` endpoint
 
 3. **Check Features:**
 ```bash
-curl http://localhost:8000/api/v1/features
+curl https://cs16-sprite-api.onrender.com/api/v1/features
 ```
 
 ---
