@@ -283,8 +283,8 @@ create_animated_sprite(frames,
 - `DEPLOYMENT.md` - Platform-specific deployment guides
 
 **API Documentation**
-- Swagger UI: `http://localhost:8000/docs`
-- ReDoc: `http://localhost:8000/redoc`
+- Swagger UI: `https://cs16-sprite-api.onrender.com/docs`
+- ReDoc: `https://cs16-sprite-api.onrender.com/redoc`
 
 **Testing**
 - Health check: `GET /health`

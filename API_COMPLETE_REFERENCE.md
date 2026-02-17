@@ -6,9 +6,8 @@
 
 ## BASE URL
 ```
-http://localhost:8000          # Local
-https://your-app.onrender.com  # Production (Render)
-https://your-app.railway.app   # Production (Railway)
+https://cs16-sprite-api.onrender.com          # Production (live)
+http://localhost:8000                          # Local development
 ```
 
 ## QUICK LINKS
@@ -266,13 +265,13 @@ No parameters required.
 
 ## cURL
 ```bash
-curl http://localhost:8000/health
+curl https://cs16-sprite-api.onrender.com/health
 ```
 
 ## Python
 ```python
 import requests
-r = requests.get("http://localhost:8000/health")
+r = requests.get("https://cs16-sprite-api.onrender.com/health")
 print(r.json())
 ```
 
@@ -313,7 +312,7 @@ GET /api/v1/features
 
 ## cURL
 ```bash
-curl http://localhost:8000/api/v1/features
+curl https://cs16-sprite-api.onrender.com/api/v1/features
 ```
 
 ---
@@ -362,13 +361,13 @@ PNG · JPG · JPEG · BMP · GIF
 
 ### cURL — Minimal
 ```bash
-curl -X POST "http://localhost:8000/api/v1/convert/image" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v1/convert/image" \
   -F "file=@muzzleflash.png"
 ```
 
 ### cURL — Full Options
 ```bash
-curl -X POST "http://localhost:8000/api/v1/convert/image" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v1/convert/image" \
   -F "file=@muzzleflash.png" \
   -F "sprite_type=vp_parallel" \
   -F "texture_format=additive" \
@@ -383,7 +382,7 @@ import requests
 
 with open("muzzleflash.png", "rb") as f:
     resp = requests.post(
-        "http://localhost:8000/api/v1/convert/image",
+        "https://cs16-sprite-api.onrender.com/api/v1/convert/image",
         files={"file": f},
         data={
             "sprite_type": "vp_parallel",
@@ -439,7 +438,7 @@ MP4 · AVI · MOV · MKV · WEBM
 
 ### cURL — Basic
 ```bash
-curl -X POST "http://localhost:8000/api/v1/convert/video" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v1/convert/video" \
   -F "file=@explosion.mp4" \
   -F "texture_format=additive" \
   -F "fps=20" \
@@ -448,7 +447,7 @@ curl -X POST "http://localhost:8000/api/v1/convert/video" \
 
 ### cURL — Full Options
 ```bash
-curl -X POST "http://localhost:8000/api/v1/convert/video" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v1/convert/video" \
   -F "file=@explosion.mp4" \
   -F "sprite_type=vp_parallel" \
   -F "texture_format=additive" \
@@ -464,7 +463,7 @@ import requests
 
 with open("explosion.mp4", "rb") as f:
     resp = requests.post(
-        "http://localhost:8000/api/v1/convert/video",
+        "https://cs16-sprite-api.onrender.com/api/v1/convert/video",
         files={"file": f},
         data={
             "texture_format": "additive",
@@ -493,7 +492,7 @@ form.append("fps", "20");
 form.append("max_frames", "30");
 
 const res = await axios.post(
-    "http://localhost:8000/api/v1/convert/video",
+    "https://cs16-sprite-api.onrender.com/api/v1/convert/video",
     form, { headers: form.getHeaders() }
 );
 
@@ -531,7 +530,7 @@ PNG · JPG · JPEG · BMP · GIF  (per frame)
 
 ### cURL
 ```bash
-curl -X POST "http://localhost:8000/api/v1/convert/images/animated" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v1/convert/images/animated" \
   -F "files=@frame01.png" \
   -F "files=@frame02.png" \
   -F "files=@frame03.png" \
@@ -548,7 +547,7 @@ frame_files = ["frame01.png", "frame02.png", "frame03.png", "frame04.png"]
 files = [("files", open(p, "rb")) for p in frame_files]
 
 resp = requests.post(
-    "http://localhost:8000/api/v1/convert/images/animated",
+    "https://cs16-sprite-api.onrender.com/api/v1/convert/images/animated",
     files=files,
     data={
         "texture_format": "additive",
@@ -580,7 +579,7 @@ form.append("texture_format", "additive");
 form.append("frame_interval", "0.05");
 
 const res = await axios.post(
-    "http://localhost:8000/api/v1/convert/images/animated",
+    "https://cs16-sprite-api.onrender.com/api/v1/convert/images/animated",
     form, { headers: form.getHeaders() }
 );
 console.log(res.data);
@@ -686,7 +685,7 @@ Videos: MP4 · AVI · MOV · MKV · WEBM
 
 ### cURL — Image, remove black background
 ```bash
-curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced" \
   -F "file=@muzzleflash.png" \
   -F "remove_background=true" \
   -F "background_mode=black" \
@@ -700,7 +699,7 @@ curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
 
 ### cURL — Image, all enhancements
 ```bash
-curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced" \
   -F "file=@sprite.png" \
   -F "remove_background=true" \
   -F "background_mode=auto" \
@@ -720,7 +719,7 @@ curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
 
 ### cURL — Green screen video
 ```bash
-curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced" \
   -F "file=@greenscreen.mp4" \
   -F "is_video=true" \
   -F "fps=20" \
@@ -735,7 +734,7 @@ curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
 
 ### cURL — Explosion video, full pipeline
 ```bash
-curl -X POST "http://localhost:8000/api/v2/convert/advanced" \
+curl -X POST "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced" \
   -F "file=@explosion.mp4" \
   -F "is_video=true" \
   -F "fps=20" \
@@ -804,7 +803,7 @@ def convert_advanced(file_path, is_video=False, **options):
 
     with open(file_path, "rb") as f:
         resp = requests.post(
-            "http://localhost:8000/api/v2/convert/advanced",
+            "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced",
             files={"file": f},
             data=defaults
         )
@@ -820,7 +819,7 @@ def convert_advanced(file_path, is_video=False, **options):
 def download_sprite(sprite_id, output_path="output.spr"):
     """Download the generated sprite file."""
     resp = requests.get(
-        f"http://localhost:8000/api/v1/download/{sprite_id}",
+        f"https://cs16-sprite-api.onrender.com/api/v1/download/{sprite_id}",
         stream=True
     )
     with open(output_path, "wb") as f:
@@ -893,7 +892,7 @@ async function convertAdvanced(filePath, isVideo = false, options = {}) {
     Object.entries(defaults).forEach(([k, v]) => form.append(k, v));
 
     const res = await axios.post(
-        "http://localhost:8000/api/v2/convert/advanced",
+        "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced",
         form,
         { headers: form.getHeaders() }
     );
@@ -903,7 +902,7 @@ async function convertAdvanced(filePath, isVideo = false, options = {}) {
 
 async function downloadSprite(spriteId, outputPath = "output.spr") {
     const res = await axios.get(
-        `http://localhost:8000/api/v1/download/${spriteId}`,
+        `https://cs16-sprite-api.onrender.com/api/v1/download/${spriteId}`,
         { responseType: "arraybuffer" }
     );
     fs.writeFileSync(outputPath, res.data);
@@ -942,7 +941,7 @@ function convertAdvanced($filePath, $isVideo = false, $options = []) {
     $params = array_merge($defaults, $options);
     $params["file"] = new CURLFile($filePath);
 
-    $ch = curl_init("http://localhost:8000/api/v2/convert/advanced");
+    $ch = curl_init("https://cs16-sprite-api.onrender.com/api/v2/convert/advanced");
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -958,7 +957,7 @@ $spriteId = $result["sprite_id"];
 // Download
 file_put_contents(
     "output.spr",
-    file_get_contents("http://localhost:8000/api/v1/download/$spriteId")
+    file_get_contents("https://cs16-sprite-api.onrender.com/api/v1/download/$spriteId")
 );
 ?>
 ```
@@ -973,7 +972,7 @@ using System.Text.Json;
 
 class SpriteClient {
     private static readonly HttpClient _http = new HttpClient();
-    private static readonly string Base = "http://localhost:8000";
+    private static readonly string Base = "https://cs16-sprite-api.onrender.com";
 
     public static async Task<JsonElement> ConvertAdvanced(
         string filePath, bool isVideo = false) {
@@ -1037,13 +1036,13 @@ Content-Disposition: `attachment; filename="<sprite_id>.spr"`
 ### cURL — Save with custom name
 ```bash
 curl -o "my_sprite.spr" \
-  "http://localhost:8000/api/v1/download/a3f1c2d4-e5b6-7890-abcd-ef1234567890"
+  "https://cs16-sprite-api.onrender.com/api/v1/download/a3f1c2d4-e5b6-7890-abcd-ef1234567890"
 ```
 
 ### cURL — Save with server filename
 ```bash
 curl -O -J \
-  "http://localhost:8000/api/v1/download/a3f1c2d4-e5b6-7890-abcd-ef1234567890"
+  "https://cs16-sprite-api.onrender.com/api/v1/download/a3f1c2d4-e5b6-7890-abcd-ef1234567890"
 ```
 
 ### Python
@@ -1052,7 +1051,7 @@ import requests
 
 def download_sprite(sprite_id, output_name=None):
     resp = requests.get(
-        f"http://localhost:8000/api/v1/download/{sprite_id}",
+        f"https://cs16-sprite-api.onrender.com/api/v1/download/{sprite_id}",
         stream=True
     )
     if resp.status_code == 200:
@@ -1108,14 +1107,14 @@ Call this after downloading to free up disk space.
 ### cURL
 ```bash
 curl -X DELETE \
-  "http://localhost:8000/api/v1/delete/a3f1c2d4-e5b6-7890-abcd-ef1234567890"
+  "https://cs16-sprite-api.onrender.com/api/v1/delete/a3f1c2d4-e5b6-7890-abcd-ef1234567890"
 ```
 
 ### Python (full workflow: convert → download → delete)
 ```python
 import requests
 
-BASE = "http://localhost:8000"
+BASE = "https://cs16-sprite-api.onrender.com"
 
 def full_workflow(image_path, output_path):
     """Convert, download, then clean up."""
@@ -1153,7 +1152,7 @@ full_workflow("muzzleflash.png", "muzzleflash.spr")
 ## ── Workflow A: Muzzle Flash (Black Background) ──────────
 ```bash
 # Step 1: Convert
-RESULT=$(curl -s -X POST "http://localhost:8000/api/v2/convert/advanced" \
+RESULT=$(curl -s -X POST "https://cs16-sprite-api.onrender.com/api/v2/convert/advanced" \
   -F "file=@muzzleflash.png" \
   -F "remove_background=true" \
   -F "background_mode=black" \
@@ -1170,10 +1169,10 @@ echo "Sprite ID: $SPRITE_ID"
 
 # Step 3: Download
 curl -o "muzzleflash.spr" \
-  "http://localhost:8000/api/v1/download/$SPRITE_ID"
+  "https://cs16-sprite-api.onrender.com/api/v1/download/$SPRITE_ID"
 
 # Step 4: Clean up
-curl -X DELETE "http://localhost:8000/api/v1/delete/$SPRITE_ID"
+curl -X DELETE "https://cs16-sprite-api.onrender.com/api/v1/delete/$SPRITE_ID"
 echo "Done! Copy muzzleflash.spr to your CS 1.6 sprites folder."
 ```
 
@@ -1181,7 +1180,7 @@ echo "Done! Copy muzzleflash.spr to your CS 1.6 sprites folder."
 ```python
 import requests
 
-BASE = "http://localhost:8000"
+BASE = "https://cs16-sprite-api.onrender.com"
 
 # Step 1: Convert video
 with open("explosion.mp4", "rb") as f:
@@ -1227,7 +1226,7 @@ print("explosion.spr ready for CS 1.6!")
 ```python
 import requests
 
-BASE = "http://localhost:8000"
+BASE = "https://cs16-sprite-api.onrender.com"
 
 with open("greenscreen_effect.mp4", "rb") as f:
     resp = requests.post(f"{BASE}/api/v2/convert/advanced",
@@ -1262,7 +1261,7 @@ import requests
 import os
 from pathlib import Path
 
-BASE = "http://localhost:8000"
+BASE = "https://cs16-sprite-api.onrender.com"
 INPUT_DIR = Path("./sprites_input")
 OUTPUT_DIR = Path("./sprites_output")
 OUTPUT_DIR.mkdir(exist_ok=True)
@@ -1308,7 +1307,7 @@ print(f"\nDone! Converted {len(results)} sprites.")
 ```python
 import requests
 
-BASE = "http://localhost:8000"
+BASE = "https://cs16-sprite-api.onrender.com"
 
 frame_paths = sorted(Path("./frames").glob("frame_*.png"))
 
@@ -1347,7 +1346,7 @@ print(f"animation.spr: {result['frame_count']} frames @ 20 FPS")
 ```python
 import requests
 
-BASE = "http://localhost:8000"
+BASE = "https://cs16-sprite-api.onrender.com"
 
 # Health check
 requests.get(f"{BASE}/health").json()
@@ -1402,7 +1401,7 @@ requests.delete(f"{BASE}/api/v1/delete/{sprite_id}")
 const axios = require("axios");
 const FormData = require("form-data");
 const fs = require("fs");
-const BASE = "http://localhost:8000";
+const BASE = "https://cs16-sprite-api.onrender.com";
 
 // Helper: build form from file path + data object
 function buildForm(filePath, data = {}) {
@@ -1452,7 +1451,7 @@ await axios.delete(`${BASE}/api/v1/delete/${sprite_id}`);
 ## ── JAVASCRIPT (BROWSER / FETCH) ────────────────────────
 
 ```javascript
-const BASE = "http://localhost:8000";
+const BASE = "https://cs16-sprite-api.onrender.com";
 
 // Health
 const health = await fetch(`${BASE}/health`).then(r => r.json());
@@ -1485,7 +1484,7 @@ async function downloadSprite(spriteId, name = "sprite.spr") {
 ## ── cURL ─────────────────────────────────────────────────
 
 ```bash
-BASE="http://localhost:8000"
+BASE="https://cs16-sprite-api.onrender.com"
 
 # Health
 curl "$BASE/health"
@@ -1534,7 +1533,7 @@ curl -X DELETE "$BASE/api/v1/delete/$SPRITE_ID"
 
 ```php
 <?php
-$BASE = "http://localhost:8000";
+$BASE = "https://cs16-sprite-api.onrender.com";
 
 function curlRequest($method, $url, $postFields = null) {
     $ch = curl_init($url);
@@ -1584,7 +1583,7 @@ class SpriteApiClient {
     private readonly HttpClient _http = new();
     private readonly string _base;
 
-    public SpriteApiClient(string baseUrl = "http://localhost:8000")
+    public SpriteApiClient(string baseUrl = "https://cs16-sprite-api.onrender.com")
         => _base = baseUrl;
 
     // Shared helper to build multipart form
